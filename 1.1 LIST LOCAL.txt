@@ -1,0 +1,122 @@
+REM #######################################################
+REM #                                                     #
+REM #          PART 1.1 DISCOVER LOCAL USERS              #
+REM #                                                     #
+REM #######################################################
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+
+DELAY 400 
+STRING import subprocess
+DELAY 400
+ENTER 
+DELAY 140 
+ENTER
+DELAY 140 
+
+STRING def list_local_users():
+DELAY 140
+SHIFT ENTER
+DELAY 180
+STRING     result = subprocess.run(['powershell', '-Command',
+DELAY 210 
+ENTER 
+DELAY 140 
+STRING                              '(Get-WmiObject -Class Win32_UserAccount | Where-Object { $_.LocalAccount -eq $True }).Name'],
+DELAY 400 
+ENTER 
+DELAY 140 
+STRING                             stdout=subprocess.PIPE, text=True)
+DELAY 250
+ENTER 
+DELAY 140 
+STRING     users = result.stdout.splitlines()
+DELAY 200
+ENTER 
+DELAY 140 
+STRING     for i, user in enumerate(users, start=1):
+DELAY 180
+ENTER 
+DELAY 140 
+STRING         print(f"{i}. {user}")
+DELAY 190 
+ENTER 
+DELAY 140 
+STRING     return users
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 1.1
+
+ENTER 
+DELAY 140 
+STRING users = list_local_users()
+DELAY 170 
+SHIFT ENTER 
+DELAY 180
+STRING def select_user(users):
+DELAY 150
+ENTER 
+DELAY 140 
+STRING     while True:
+DELAY 180
+ENTER 
+DELAY 140 
+STRING         try:
+DELAY 180
+ENTER 
+DELAY 140 
+STRING             choice = int(input("Enter the number of the user to select: "))
+DELAY 300
+ENTER 
+DELAY 140 
+STRING             if 1 <= choice <= len(users):
+DELAY 220 
+ENTER 
+DELAY 140 
+STRING                 selected_user = users[choice - 1]
+DELAY 240
+ENTER 
+DELAY 140 
+STRING                 print(f"You selected: {selected_user}")
+DELAY 250
+ENTER 
+DELAY 140 
+STRING                 return selected_user
+DELAY 220 
+ENTER 
+DELAY 140
+STRING             else:
+DELAY 220 
+ENTER 
+DELAY 140 
+STRING                 print("Invalid number. Please try again.")
+DELAY 280
+ENTER 
+DELAY 140
+STRING         except ValueError:
+DELAY 180
+ENTER 
+DELAY 140
+STRING             print("Invalid input. Please enter a number.")
+DELAY 200
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140
+
+REM PART 3 OF 1.1
+
+ENTER 
+DELAY 140
+STRING selected_user = select_user(users)
+DELAY 200
+ENTER 

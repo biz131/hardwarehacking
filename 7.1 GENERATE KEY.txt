@@ -1,0 +1,108 @@
+REM #######################################################
+REM #                                                     #
+REM #              PART 7.1 GENERATE KEY                  #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+DELAY 400 
+STRING import os
+DELAY 400
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+STRING key = os.urandom(32)
+DELAY 150
+ENTER
+DELAY 140
+ENTER 
+DELAY 140
+STRING iv = os.urandom(16)
+DELAY 150 
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING with open("encryption_key.key", "wb") as key_file:
+DELAY 200
+SHIFT ENTER 
+DELAY 180
+STRING     key_file.write(key)
+DELAY 165
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140
+STRING with open("encryption_iv.key", "wb") as iv_file:
+DELAY 220
+SHIFT ENTER 
+DELAY 180 
+STRING     iv_file.write(iv)
+DELAY 170
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING print("Key and IV generated and saved.")
+DELAY 300
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 7.1
+
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING from cryptography.hazmat.primitives import padding
+DELAY 220
+ENTER 
+DELAY 300
+STRING from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+DELAY 350
+ENTER 
+DELAY 300
+STRING from cryptography.hazmat.backends import default_backend
+DELAY 220
+ENTER 
+DELAY 300
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+STRING with open("encryption_key.key", "rb") as key_file:
+DELAY 200
+SHIFT ENTER
+DELAY 180
+STRING     key = key_file.read()
+DELAY 180
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING with open("encryption_iv.key", "rb") as iv_file:
+DELAY 200
+SHIFT ENTER
+STRING     iv = iv_file.read()
+DELAY 150
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140
+STRING print("Key and IV loaded.")
+DELAY 200
+ENTER 
+DELAY 140
+ENTER

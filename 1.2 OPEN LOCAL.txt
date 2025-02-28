@@ -1,0 +1,39 @@
+REM #######################################################
+REM #                                                     #
+REM #        PART 1.2 OPEN LOCAL USER AS ADMIN            #
+REM #                                                     #
+REM #######################################################
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+DELAY 700
+STRING users_folder_path = "C:\\Users"
+DELAY 200
+SHIFT ENTER 
+DELAY 180
+STRING try:
+DELAY 150
+ENTER 
+DELAY 140 
+STRING     subprocess.run(['explorer', users_folder_path], check=True)
+DELAY 220 
+ENTER 
+DELAY 140 
+STRING     print(f"Opened C:\\Users folder.")
+DELAY 200
+ENTER 
+DELAY 140
+STRING except Exception as e:
+DELAY 180 
+ENTER
+DELAY 140 
+STRING     print(f"An error occurred while opening the folder: {e}")
+DELAY 300 
+ENTER 
+DELAY 140 
+ENTER 

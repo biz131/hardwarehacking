@@ -1,0 +1,63 @@
+REM #######################################################
+REM #                                                     #
+REM #           PART 8.1 LOAD ENCRYPTION KEY              #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+STRING key_file_path = "encryption_key.key"
+DELAY 150
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140
+STRING try:
+DELAY 120
+SHIFT ENTER 
+DELAY 180 
+STRING     with open(key_file_path, "rb") as key_file:
+DELAY 180
+ENTER
+DELAY 140 
+STRING         key = key_file.read()
+DELAY 170 
+ENTER 
+DELAY 140
+STRING         print(key.hex())  # Print the key in hexadecimal format
+DELAY 200
+ENTER 
+DELAY 140
+STRING except FileNotFoundError:
+DELAY 150
+ENTER 
+DELAY 140
+STRING     print(f"Error: The key file '{key_file_path}' does not exist.")
+DELAY 220 
+ENTER 
+DELAY 140 
+STRING except Exception as e:
+DELAY 150
+ENTER 
+DELAY 140
+STRING     print(f"An error occurred: {e}")
+DELAY 180
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+STRING print("MAKE SURE PATH HAS A TXT FILE AT END")
+DELAY 140 
+ENTER
+DELAY 140 
+STRING key_text_path = input("Enter the path to save the encryption key as a text file: ")
+DELAY 160
+ENTER 
+
+

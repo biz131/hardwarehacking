@@ -1,0 +1,37 @@
+REM #######################################################
+REM #                                                     #
+REM #           PART 8.2 SAVE ENCRYPTION KEY              #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 500
+ENTER 
+
+STRING try:
+DELAY 120
+SHIFT ENTER 
+DELAY 180
+STRING     with open(key_text_path, "w") as text_file:
+DELAY 170
+ENTER 
+DELAY 140         
+STRING         text_file.write(key.hex())
+DELAY 150
+ENTER 
+DELAY 140
+STRING         print(f"Encryption key saved to: {key_text_path}")
+DELAY 170 
+ENTER 
+DELAY 140 
+STRING except Exception as e:
+DELAY 140
+ENTER 
+DELAY 140 
+STRING     print(f"Failed to save the key to the file: {e}")
+DELAY 160 
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+ENTER 

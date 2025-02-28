@@ -1,0 +1,65 @@
+REM #######################################################
+REM #                                                     #
+REM #        PART 2.0 SHOW LOCAL USER DOWNLOADS           #
+REM #                                                     #
+REM #######################################################
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+DELAY 400 
+STRING import os
+DELAY 400
+ENTER 
+DELAY 140 
+ENTER
+DELAY 200
+
+STRING def list_downloads(selected_user):
+DELAY 210
+SHIFT ENTER 
+DELAY 180
+STRING     downloads_path = f"C:\\Users\\{selected_user}\\Downloads"
+DELAY 230
+ENTER 
+DELAY 140 
+STRING     if os.path.exists(downloads_path):
+DELAY 190
+ENTER 
+DELAY 140
+STRING         print(f"\nFiles in {downloads_path}:")
+DELAY 220
+ENTER 
+DELAY 140
+STRING         for file in os.listdir(downloads_path):
+DELAY 240
+ENTER
+DELAY 
+STRING             print(file)
+DELAY 190
+ENTER 
+DELAY 140
+STRING     else:
+DELAY 150
+ENTER 
+DELAY 140 
+STRING         print(f"The Downloads folder for {selected_user} does not exist or is not accessible.")
+DELAY 350
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 2.0
+
+ENTER 
+DELAY 140 
+STRING list_downloads(selected_user)
+DELAY 200
+ENTER 
+DELAY 140 
+ENTER

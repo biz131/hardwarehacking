@@ -1,0 +1,101 @@
+REM #######################################################
+REM #                                                     #
+REM #             PART 3.0 MOVE FILES TO HI               #
+REM #                                                     #
+REM #######################################################
+
+
+DELAY 1000 
+ENTER 
+DELAY 500
+ENTER 
+DELAY 400
+ENTER 
+
+DELAY 400 
+STRING import os
+DELAY 400
+ENTER 
+DELAY 140 
+STRING import shutil
+DELAY 400
+ENTER
+DELAY 200
+ENTER
+DELAY 200
+
+STRING def move_files(src, dest):
+DELAY 200 
+SHIFT ENTER 
+DELAY 180 
+STRING     for root, dirs, files in os.walk(src):
+DELAY 210
+ENTER
+DELAY 140
+STRING         for file in files:
+DELAY 200
+ENTER 
+DELAY 140
+STRING             file_path = os.path.join(root, file)
+DELAY 230
+ENTER 
+DELAY 140
+STRING             relative_path = os.path.relpath(file_path, src)
+DELAY 250
+ENTER 
+DELAY 140 
+STRING             dest_path = os.path.join(dest, relative_path)
+DELAY 240
+ENTER
+DELAY 140 
+STRING             dest_dir = os.path.dirname(dest_path)
+DELAY 220
+ENTER 
+DELAY 140 
+STRING             if not os.path.exists(dest_dir):
+DELAY 210 
+ENTER 
+DELAY 140 
+STRING                 os.makedirs(dest_dir)
+DELAY 200 
+ENTER 
+DELAY 140 
+STRING             shutil.move(file_path, dest_path)
+DELAY 200
+ENTER 
+DELAY 140 
+STRING         for dir in dirs:
+DELAY 160 
+ENTER 
+DELAY 140 
+STRING             dir_path = os.path.join(root, dir)
+DELAY 230 
+ENTER 
+DELAY 14O
+STRING             if not os.listdir(dir_path):  # Check if directory is empty
+DELAY 280 
+ENTER 
+DELAY 140 
+STRING                 os.rmdir(dir_path)
+DELAY 190 
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
+
+REM PART 2 OF 3.0
+
+ENTER 
+DELAY 140 
+STRING downloads_path = f"C:\\Users\\{selected_user}\\Downloads"
+DELAY 200
+ENTER 
+DELAY 140 
+STRING hi_folder_path = os.path.join(downloads_path, "hi")
+ENTER 
+DELAY 140 
+STRING move_files(downloads_path, hi_folder_path)
+ENTER 
+DELAY 140 
+ENTER 
+DELAY 140 
